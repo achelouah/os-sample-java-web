@@ -256,20 +256,20 @@ if [ -f "$LOCAL_SOURCE_DIR/pom.xml" ]; then
     export MAVEN_ARGS="package -Popenshift -DskipTests -B"
   fi
 
-  # If MAVEN_SETTINGS specified will always add to MAVEN_ARGS
-  # Can be relative to application root
-  # Can be global to image
-  if [ -z "$MAVEN_SETTINGS" ]; then
-    export MAVEN_ARGS="$MAVEN_ARGS -s $HOME/.m2/settings.xml"
-  else
-    if [[ "$MAVEN_SETTINGS" = /* ]]; then
-       [ ! -e "$MAVEN_SETTINGS" ] && echo "Specified settings file does not exist in the image. [$MAVEN_SETTINGS]" && exit 1
-       export MAVEN_ARGS="$MAVEN_ARGS -s $MAVEN_SETTINGS"
-    else
-       [ ! -e "$LOCAL_SOURCE_DIR/$MAVEN_SETTINGS" ] && echo "Specified settings file does not exist in your source code. [$MAVEN_SETTINGS]" && exit 1
-       export MAVEN_ARGS="$MAVEN_ARGS -s $LOCAL_SOURCE_DIR/$MAVEN_SETTINGS"
-    fi
-  fi
+  ## If MAVEN_SETTINGS specified will always add to MAVEN_ARGS
+  ## Can be relative to application root
+  ## Can be global to image
+  #if [ -z "$MAVEN_SETTINGS" ]; then
+  #  export MAVEN_ARGS="$MAVEN_ARGS -s $HOME/.m2/settings.xml"
+  #else
+  #  if [[ "$MAVEN_SETTINGS" = /* ]]; then
+  #     [ ! -e "$MAVEN_SETTINGS" ] && echo "Specified settings file does not exist in the image. [$MAVEN_SETTINGS]" && exit 1
+  #     export MAVEN_ARGS="$MAVEN_ARGS -s $MAVEN_SETTINGS"
+  #  else
+  #     [ ! -e "$LOCAL_SOURCE_DIR/$MAVEN_SETTINGS" ] && echo "Specified settings file does not exist in your source code. [$MAVEN_SETTINGS]" && exit 1
+  #     export MAVEN_ARGS="$MAVEN_ARGS -s $LOCAL_SOURCE_DIR/$MAVEN_SETTINGS"
+  #  fi
+  #fi
 
   # Append user provided args
   if [ -n "$MAVEN_ARGS_APPEND" ]; then

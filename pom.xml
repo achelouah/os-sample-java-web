@@ -8,6 +8,28 @@
   <name>getting-started-tomcat Maven Webapp</name>
   <url>http://maven.apache.org</url>
 
+        <repositories>
+                <repository>
+                        <id>Nexus</id>
+                        <name>Forge Nexus</name>
+                        <url>http://si-nexus-forge.edf.fr/nexus/content/repositories/public-repo1-maven</url>
+                </repository>
+        </repositories>
+
+        <pluginRepositories>
+            <pluginRepository>
+                <id>Nexus</id>
+                <name>Forge Nexus</name>
+                <url>http://si-nexus-forge.edf.fr/nexus/content/repositories/public-repo1-maven</url>
+                <layout>default</layout>
+                <snapshots>
+                        <enabled>true</enabled>
+                </snapshots>
+                <releases>
+                        <updatePolicy>never</updatePolicy>
+                </releases>
+           </pluginRepository>
+       </pluginRepositories>
 
   <dependencies>
       <!-- http://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
